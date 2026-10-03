@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Интерактивная карта фронта и пользовательских сценариев.">
+<title>Карта фронта — сценарии</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="panel">
+<h3>Карта фронта — редактор</h3>
+
+<div class="status" id="status">Загружаю линию фронта…</div>
+
+<b>Режим</b>
+<div class="row">
+  <button id="overviewMode" class="mode active">🔎 Обзор</button>
+  <button id="paintMode" class="mode">🖌️ Территория</button>
+</div>
+
+<b>2. Сторона</b>
+<div class="row">
+  <button id="ua" class="ua active">🇺🇦 Украина</button>
+  <button id="ru" class="ru">🇷🇺 Россия</button>
+</div>
+
+<div id="paintControls" style="display:none">
+  Серая зона: <b><span id="grayValue">0 км</span></b>
+  <input id="gray" type="range" min="0" max="10" step="0.5" value="0">
+</div>
+
+<button id="undo" class="wide">↩ Удалить последнее изменение</button>
+<button id="clearScenario" class="wide">🗑 Очистить мой сценарий</button>
+
+<hr>
+<div class="legend">
+  <div><span class="sw fill" style="background:#1976d2"></span> территория Украины в сценарии</div>
+  <div><span class="sw fill" style="background:#d32f2f"></span> территория России в сценарии</div>
+  <div><span class="sw fill" style="background:#999"></span> серая зона</div>
+</div>
+
+<hr>
+<div class="small">
+<b>Как пользоваться:</b><br>
+• Обзор: двигай карту мышью и масштабируй колёсиком.<br>
+• Территория: выбери сторону, зажми левую кнопку и обведи участок.<br>
+• Во время рисования показывается пунктир.<br>
+• Актуальный фронт не исчезает при рисовании.
+</div>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7/turf.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
